@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                 document.getElementById('activity-2').style.display = 'none';
+                  document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M23</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para aprender a pasar datos entre páginas en Bubble.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a dominar el arte de conectar la información en nuestra app, aprendiendo a pasar datos entre páginas y mostrar contenido dinámico. ¡Prepárense para llevar la interactividad de su app al siguiente nivel!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo están. Si se sienten listos para interconectar datos, choquen los cinco con la persona que tengan al lado. Si necesitan un poco más de energía, levanten los brazos y estírense como si alcanzaran el cielo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos importantes: 1. Aprender a enviar datos entre diferentes páginas en Bubble. 2. Conocer cómo mostrar contenido dinámico en diferentes partes de nuestra app. 3. Integrar esta funcionalidad en la app de alojamiento para mostrar la información completa de cada propiedad."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Conocer una herramienta que simplifica la navegación entre pantallas.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a explorar la magia de los ‘deep links’. Estos enlaces permiten a una app llevarte directamente a una página específica, en lugar de a la página de inicio. Esto es especialmente útil en aplicaciones con gran cantidad de contenido o funcionalidades."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Ejemplo de Deep Links".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Imaginen que ven un anuncio de una propiedad en redes sociales. Al hacer clic en ese anuncio, la app les lleva directamente a la página de esa propiedad, en lugar de simplemente abrir la aplicación y dejarlos buscando.  Así es como funcionan los 'deep links'. Veamos un ejemplo en pantalla para entender mejor su utilidad y cómo mejoran la experiencia del usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Deep Links".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece? Los 'deep links' son un excelente ejemplo de cómo conectar la información y mejorar la navegación entre páginas. En Bubble, aprenderemos a crear funcionalidades similares para que los usuarios puedan moverse de forma fluida entre los alojamientos de nuestra app. ¡Siempre busquen una experiencia más eficiente!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Corte por extensión --------------------------------------------------------- -->
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 22 minutos</div>
+         <div class="subtitle">Aprender cómo enviar datos y crear contenido dinámico en Bubble.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción al Envío de Datos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a sumergirnos en la magia de la interacción en nuestras aplicaciones. Aprenderemos cómo enviar datos entre páginas y cómo utilizar estos datos para mostrar contenido dinámico. Imaginen que en la pantalla principal de nuestra app tenemos un listado de alojamientos.  Al hacer clic en cualquiera de ellos, no sólo debemos ir a la página del alojamiento, sino que debemos mostrar la información específica de ese alojamiento. Esto es lo que aprenderemos a hacer hoy: enviar y recibir información entre páginas, y mostrarla dinámicamente. ¡Prepárense para conectar todas las piezas de su aplicación!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "Flujo de Trabajo para la Navegación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En Bubble, para navegar entre páginas e intercambiar información, usamos los workflows.  En la página donde tengamos el listado de propiedades, vamos a añadir un workflow que se active cuando el usuario haga clic en la imagen de una propiedad. Dentro de este workflow, seleccionaremos la acción ‘Go to page’, indicando a Bubble que debe redirigir al usuario a la página del alojamiento. Esto creará una transición limpia y fluida entre la página de búsqueda de propiedades y la página con la información específica del alojamiento."</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 3 (2 minutos):</strong> Proyectar Diapositiva 11 "Enviar Datos a la Página de Destino".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En la misma acción ‘Go to page’ del workflow, tenemos la opción de enviar datos a la página de destino. Aquí es donde indicamos qué información de la propiedad seleccionada debemos enviar.  Bubble nos permite enviar datos de la página actual a la página de destino, por ejemplo, el nombre del alojamiento, su descripción, precio, fotos y cualquier otra información que deseemos. Es importante configurar correctamente estos datos, ya que son los que nos permiten mostrar información personalizada y precisa en la página de destino. Recuerden que en Bubble, las posibilidades de personalización son infinitas."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Configuración de la Página de Destino".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En la página del alojamiento, necesitamos configurar la manera en que Bubble interpreta los datos que enviamos. Al igual que cualquier otra página, las páginas de alojamiento en Bubble tienen una fuente de datos, lo cual la vuelve dinámica. Primero tenemos que indicarle a Bubble que ésta página está destinada a recibir información de tipo ‘Property’, o alojamiento. De ésta manera, Bubble sabrá qué tipo de información esperar cuando un usuario entre a esta página, lo que nos permite usar esos datos en las siguientes acciones. Recuerden, la organización y el orden de la información es fundamental en el éxito de nuestras apps."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "Mostrando Contenido Dinámico".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una vez configurada la página del alojamiento para recibir información de tipo ‘Property’, podemos utilizar este dato para mostrar contenido dinámico. Por ejemplo, en un componente tipo texto, podríamos usar la opción ‘Insert Dynamic Data’ para mostrar el nombre del alojamiento, su descripción o cualquier otra información de la propiedad que hayamos enviado desde la página principal. Lo mismo podemos hacer con componentes tipo imagen, pues podemos mostrar las fotos de la propiedad. Esta capacidad de mostrar datos que cambian según la información recibida es lo que llamamos contenido dinámico, y es esencial para crear aplicaciones complejas e interactivas."</td>
+           </tr>
+             <tr>
+                 <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Usando 'Current Page' para Mostrar Datos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En Bubble, cuando trabajamos con información enviada a una página, podemos referirnos a ella utilizando la palabra clave ‘Current Page’.  Por ejemplo, ‘Current Page’s Property’ hace referencia a la información de la propiedad que ha sido enviada a la página actual. Al acceder a la información de ‘Current Page’ podemos utilizar los campos de la tabla de alojamientos, como ‘Current Page’s Property’s Name’ para obtener el nombre del alojamiento, o ‘Current Page’s Property’s Description’ para la descripción, y así con cualquier otro tipo de información. La variable ‘Current Page’ nos permite utilizar la información recibida en todos los componentes de la página."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 7 (2 minutos):</strong> Proyectar Diapositiva 15 "Conexión de Componentes a los Datos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para mostrar la información en la página del alojamiento, necesitamos conectar los componentes de texto e imagen con los datos enviados. Al seleccionar un componente tipo texto, usaremos la opción ‘Insert Dynamic Data’, donde podremos elegir la información de ‘Current Page’ que deseamos mostrar. Por ejemplo, para el título del alojamiento, seleccionaremos ‘Current Page’s Property’s Name’, y para la descripción, seleccionaremos ‘Current Page’s Property’s Description’.  Lo mismo haremos con las imágenes, usando la opción de la imagen dinámica. Con esto, la información que veamos en la página del alojamiento será diferente para cada propiedad."</td>
+            </tr>
+           <tr>
+                 <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Reutilización de Componentes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una vez que hayamos creado la estructura de la página de alojamiento, podemos reutilizarla para todos los demás alojamientos. Esto lo podemos lograr gracias a la naturaleza dinámica de la página. Al estar configurada para recibir la información de cada propiedad de manera específica, podemos usar la misma página para mostrar cualquier propiedad, ahorrando tiempo y esfuerzo y manteniendo la consistencia de nuestro diseño.  La reutilización de componentes es un principio esencial en el desarrollo de aplicaciones, pues nos permite hacer más eficiente nuestro trabajo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "El Poder de la Interconexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Entender cómo enviar información de una página a otra y cómo mostrar esa información dinámicamente, es fundamental para crear aplicaciones con una experiencia de usuario fluida e intuitiva. Al conectar todos los elementos de nuestra app, podemos crear flujos de trabajo que lleven a los usuarios por recorridos personalizados. Ahora, ya no sólo estamos creando pantallas, sino experiencias que guían a nuestros usuarios. La interconexión de datos entre páginas es el corazón de cualquier aplicación moderna."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 10 (1.5 minutos):</strong> Proyectar Diapositiva 18 "El Caso de Estudio de Airbnb".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Piensen en una app como Airbnb, donde en la página principal ven una lista de alojamientos. Al hacer clic en cualquiera de ellos, son llevados a la página del alojamiento con la información completa. Este es un ejemplo perfecto de cómo enviar datos entre páginas y mostrar contenido dinámico de una manera efectiva.  Si quieren entender el poder de esta funcionalidad, inspírense en aplicaciones de éste calibre. Ahora que ustedes también conocen la manera de implementarlo, pueden crear aplicaciones tan complejas y completas como sus propias necesidades lo requieran."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (2 minutos):</strong> Proyectar Diapositiva 19 "Consideraciones de UX".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Al implementar esta funcionalidad, asegúrense de que los usuarios comprendan cómo navegar entre páginas y cómo obtener la información que necesitan. Usen transiciones suaves entre páginas, indicadores claros de dónde se encuentran en la aplicación y menús intuitivos. Recuerden que el diseño de una buena experiencia de usuario es tan importante como la funcionalidad. Siempre busquen que la interfaz guíe al usuario para hacer más intuitivo el manejo de sus aplicaciones."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 12 (1 minute):</strong> Proyectar Diapositiva 20 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hagamos una pausa para revisar lo que hemos aprendido hasta ahora. Hemos explorado cómo enviar datos entre páginas y cómo mostrar contenido dinámico en Bubble.  También entendemos por qué estas funciones son clave para cualquier app funcional e interactiva. ¡Estamos listos para seguir avanzando en esta gran misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🌟 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+         <div class="subtitle">Relajación y enfoque con el ejercicio de Manos Mágicas.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a relajarnos con un ejercicio de ‘Manos Mágicas’. Froten sus manos rápidamente hasta que se sientan calientes, y luego colóquenlas suavemente sobre sus ojos cerrados. ¡Disfruten de este momento de calma y enfoque!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 22 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Beneficios del Ejercicio".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Este ejercicio nos ayuda a relajar la vista, mejorar la circulación y aumentar nuestra concentración para la tarea que sigue. ¡Ahora estamos listos para continuar con energía renovada!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Reorganizar equipos y recoger materiales para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+             <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora, por favor, reúnanse con los mismos equipos que han estado trabajando en las misiones anteriores. Mantener la continuidad nos permitirá aprovechar mejor el tiempo y las habilidades de todos.  Tienen un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 25 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, por favor, un representante de cada equipo pase a recoger las Magic Tablets. Asegúrense de que todos estén listos con su dispositivo para continuar con el reto. Tienen un minuto para hacerlo."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 14.5 minutos</div>
+        <div class="subtitle">Implementar la lógica de paso de datos entre páginas en Bubble.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+               <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Título del Challenge".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de llevar a la práctica lo aprendido. Hoy diseñarán en papel la lógica de envío de datos entre páginas, así como la manera de mostrar la información de manera dinámica. ¡Prepárense para conectar la información de su app!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 29 "Diseño del Flujo de Datos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "El reto de hoy consiste en diseñar la lógica para enviar datos de la página principal a la página de cada alojamiento. Primero, dibujen el flujo de trabajo que se activará cuando un usuario haga clic en una propiedad. Indiquen qué datos específicos de la propiedad se enviarán a la página de destino y cómo la información se mostrará de manera dinámica, para que se vean los detalles de cada propiedad. Piensen cómo esta interconexión hace más fluida la experiencia del usuario. Recuerden que la planificación es esencial antes de empezar a construir en Bubble. Tienen 10 minutos para realizar este diseño."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 30 "Cronómetro - 10 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 31 "Intercambio de Diseños".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, júntense con el equipo que tengan más cerca y compartan sus diseños de flujo de datos. Expliquen qué elementos seleccionaron y cómo se aseguran de que la información se muestre de manera correcta en la página de destino. ¡Compartir diferentes puntos de vista es fundamental para crecer!"</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 32 "Cronómetro - 1.5 Minutos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 33 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, revisemos lo que hemos logrado en esta sesión. Hemos comprendido cómo enviar datos entre páginas y mostrar contenido dinámico en Bubble. Hemos dado un gran paso hacia una aplicación más interactiva y conectada. ¡Han hecho un trabajo excelente!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 34 "You've Got Mon-e".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Hoy han demostrado su capacidad para diseñar lógica compleja. Su esfuerzo y dedicación merecen un reconocimiento especial. ¡You've Got Mon-e por su increíble trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🎁 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+         <div class="subtitle">Premio a la atención con una pregunta sobre una innovación del día.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Pregunta Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora del Easter Egg. Veamos quién ha estado prestando atención a los detalles de la clase.  Proyectaré una pregunta relacionada con la innovación del día y los tres primeros en levantar la mano tendrán la oportunidad de responder en voz baja y ganar Mon-e."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 36 "La Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué nombre reciben los enlaces que permiten a una app llevarte directamente a una página específica, en lugar de a la página de inicio? ¡Levanten la mano si saben la respuesta!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 37 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Voy a escuchar las respuestas. Tú primero, ven y dime tu respuesta al oído. Ahora tú, segundo, ¿qué opinas? Y finalmente tú, tercero. ¡La respuesta correcta es ‘deep links’! Felicidades a los ganadores, se llevan Mon-e por su excelente atención. ¡Muy bien, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cerrar la sesión, dejando el espacio de trabajo en orden.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 38 "Honor de Dojo".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de honrar nuestro espacio de trabajo. Por favor, asegúrense de devolver las Magic Tablets, recoger todos los materiales y dejar el espacio limpio y ordenado.  ¡Gracias por su colaboración y por mantener el Dojo en perfectas condiciones!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
